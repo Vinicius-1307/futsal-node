@@ -19,3 +19,40 @@ model Users {
 
   @@map("users")
 }
+
+model Teams {
+  id         String    @id @default(uuid())
+  name       String    @unique
+  points     Int
+  goals      Int
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt()
+  MatchesA   Matches[] @relation(name: "matches_teamA")
+  MatchesB   Matches[] @relation(name: "matches_teamB")
+  Players    Players[] @relation(name: "players_team")
+
+  @@map("teams")
+}
+
+model Matches {
+  id         String   @id @default(uuid())
+  start_time DateTime
+  end_time   DateTime
+  teamA_id   String
+  teamA      Teams    @relation(name: "matches_teamA", fields: [teamA_id], references: [id], onDelete: Cascade)
+  teamB_id   String
+  teamB      Teams    @relation(name: "matches_teamB", fields: [teamB_id], references: [id], onDelete: Cascade)
+  goalsTeamA Int
+  goalsTeamB Int
+  result     String
+
+  @@map("matches")
+}
+
+model Players {
+  id           String @id @default(uuid())
+  name         String
+  shirt_number Int
+  team_id      String
+  Team         Teams  @relation(name: "players_team", fields: [team_id], references: [id], onDelete: Cascade)
+}
