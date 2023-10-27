@@ -58,7 +58,7 @@ if (folderNames.length < 2) {
         import { ${useCaseName}UseCase } from "./${useCaseName}UseCase";
         import { ${useCaseName}Validation } from "./${useCaseName}Validation";
         import { container } from "tsyringe";
-        import { ReturnAPI } from "@helpers/returnAPI";
+        import { ReturnApi } from "@helpers/returnApi";
         
         export class ${useCaseName}Controller {
         
@@ -71,7 +71,7 @@ if (folderNames.length < 2) {
         
                 await ${useCaseName.toLowerCase()}UseCase.execute();
         
-                return ReturnAPI.success(res, { data: null, message: "", developerMessage: "", statusHTTP: 200 });
+                return ReturnApi.success(res, { data: null, message: "", developerMessage: "", statusHTTP: 200 });
             }
         }`;
 

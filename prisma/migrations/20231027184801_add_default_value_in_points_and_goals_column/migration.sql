@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE `teams` MODIFY `points` INTEGER NOT NULL DEFAULT 0,
+    MODIFY `goals` INTEGER NOT NULL DEFAULT 0;

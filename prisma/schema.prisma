@@ -23,8 +23,8 @@ model Users {
 model Teams {
   id         String    @id @default(uuid())
   name       String    @unique
-  points     Int
-  goals      Int
+  points     Int       @default(0)
+  goals      Int       @default(0)
   created_at DateTime  @default(now())
   updated_at DateTime  @updatedAt()
   MatchesA   Matches[] @relation(name: "matches_teamA")

@@ -2,8 +2,8 @@
         
         const createuserSchema = z.object({
             name: z.string({
-                invalid_type_error:"O campo e-mail deve ser do tipo string.", 
-                required_error: "O campo e-mail é obrigatório."}),
+                invalid_type_error:"O campo nome deve ser do tipo string.", 
+                required_error: "O campo nome é obrigatório."}),
             email: z.string({
                 invalid_type_error:"O campo e-mail deve ser do tipo string.", 
                 required_error: "O campo e-mail é obrigatório."})
