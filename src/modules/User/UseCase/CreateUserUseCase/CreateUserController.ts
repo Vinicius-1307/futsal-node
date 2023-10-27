@@ -19,7 +19,7 @@ import { Request, Response } from "express";
                     data: null, 
                     message: "Conta criada com sucesso.", 
                     developerMessage: "Account created.", 
-                    statusHTTP: 20
+                    statusHTTP: 200
                 });
             }
         }
