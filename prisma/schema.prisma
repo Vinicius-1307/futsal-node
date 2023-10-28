@@ -42,9 +42,9 @@ model Matches {
   teamA      Teams    @relation(name: "matches_teamA", fields: [teamA_id], references: [id], onDelete: Cascade)
   teamB_id   String
   teamB      Teams    @relation(name: "matches_teamB", fields: [teamB_id], references: [id], onDelete: Cascade)
-  goalsTeamA Int
-  goalsTeamB Int
-  result     String
+  goalsTeamA Int      @default(0)
+  goalsTeamB Int      @default(0)
+  result     String   @default("")
 
   @@map("matches")
 }
