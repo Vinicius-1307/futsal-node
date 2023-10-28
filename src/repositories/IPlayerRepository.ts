@@ -17,4 +17,6 @@ export interface IPlayerRepository{
   create(data: ICreatePlayerDTO) : Promise<IPlayer>;
   update(data: IUpdatePlayerDTO) : Promise<IPlayer>;
   findByShirtNumber(team_id: string, shirt_number: number) : Promise<IPlayer>
+  findById(player_id: string): Promise<IPlayer>;
+  delete(player_id: string): Promise<void>;
 }

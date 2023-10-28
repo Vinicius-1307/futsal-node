@@ -9,6 +9,19 @@ export class PlayerRepositoryPrisma implements IPlayerRepository {
     this.repository = prisma.players;
   }
 
+  async findById(player_id: string): Promise<IPlayer> {
+    const player = await this.repository.findFirst({ 
+      where: { 
+        id: player_id 
+      } });
+    return player as IPlayer;
+  }
+
+  async delete(player_id: string): Promise<void> {
+    await this.repository.delete({ where: { id: player_id } })
+    return;
+  }
+
   async update({name, shirt_number, team_id, player_id}: IUpdatePlayerDTO): Promise<IPlayer> {
     const player = await this.repository.update({
       where: { 
