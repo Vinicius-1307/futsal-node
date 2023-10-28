@@ -19,7 +19,7 @@ import { Request, Response } from "express";
                 return ReturnApi.success(res, { 
                     data: null, 
                     message: "Time atualizado com sucesso.", 
-                    developerMessage: "Team atualized", 
+                    developerMessage: "Updated team", 
                     statusHTTP: 200 });
             }
         }
