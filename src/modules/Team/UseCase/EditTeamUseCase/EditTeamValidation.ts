@@ -1,6 +1,10 @@
   import { z } from "zod";
         
-        const editteamSchema = z.object({});
+        const editteamSchema = z.object({
+            name: z.string({
+                invalid_type_error:"O campo nome deve ser do tipo string.", 
+                required_error: "O campo nome é obrigatório."}),
+            });
 
        export class EditTeamValidation {
             static validate(data:z.infer<typeof editteamSchema>):z.infer<typeof editteamSchema> {

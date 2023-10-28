@@ -2,19 +2,24 @@ import { Request, Response } from "express";
         import { EditTeamUseCase } from "./EditTeamUseCase";
         import { EditTeamValidation } from "./EditTeamValidation";
         import { container } from "tsyringe";
-        import { ReturnAPI } from "@helpers/returnAPI";
+        import { ReturnApi } from "@helpers/returnApi";
         
         export class EditTeamController {
         
             async handle(req: Request, res: Response) {
           
-                const data = EditTeamValidation.validate(req.body);
-        
+                const {team_id} = req.params;
+                const {name} = EditTeamValidation.validate(req.body);
+                
                 const editteamUseCase = container.resolve(EditTeamUseCase);
         
         
-                await editteamUseCase.execute();
+                await editteamUseCase.execute({name, team_id});
         
-                return ReturnAPI.success(res, { data: null, message: "", developerMessage: "", statusHTTP: 200 });
+                return ReturnApi.success(res, { 
+                    data: null, 
+                    message: "Time atualizado com sucesso.", 
+                    developerMessage: "Team atualized", 
+                    statusHTTP: 200 });
             }
         }
