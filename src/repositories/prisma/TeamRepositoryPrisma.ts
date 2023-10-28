@@ -9,11 +9,16 @@ export class TeamRepositoryPrisma implements ITeamRepository {
     this.repository = prisma.teams;
   }
 
+  async delete(team_id: string): Promise<void> {
+    await this.repository.delete({ where: { id: team_id } })
+    return;
+  }
+
   async updateTeam({
     team_id, 
     name
   }: IUpdateTeamDTO): Promise<void> {
-    const team = await this.repository.update({
+    await this.repository.update({
       where: { 
         id: team_id,
       },
