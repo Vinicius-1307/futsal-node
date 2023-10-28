@@ -14,4 +14,5 @@ export interface ITeamRepository {
   findById(team_id: string): Promise<ITeam>;
   updateTeam(data: IUpdateTeamDTO) : Promise<void>;
   delete(team_id: string): Promise<void>;
+  update(team: ITeam): Promise<void>;
 }

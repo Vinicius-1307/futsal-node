@@ -9,6 +9,18 @@ export class MatchRepositoryPrisma implements IMatchRepository {
     this.repository = prisma.matches;
   }
 
+  async update(match: IMatch): Promise<void> {
+   
+  }
+
+  async findById(match_id: string): Promise<IMatch> {
+    const match = await this.repository.findFirst({ 
+      where: { 
+        id: match_id 
+      } });
+    return match as IMatch;
+  }
+
   async create(data: ICreateMatchDTO): Promise<IMatch> {
     const match = await this.repository.create({
       data: {

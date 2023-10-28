@@ -9,4 +9,6 @@ export interface ICreateMatchDTO {
 
 export interface IMatchRepository{
   create(data: ICreateMatchDTO) : Promise<IMatch>;
+  findById(match_id: string) : Promise<IMatch>;
+  update(match: IMatch): Promise<void>;
 }
