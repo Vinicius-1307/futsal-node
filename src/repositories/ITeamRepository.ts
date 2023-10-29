@@ -16,4 +16,5 @@ export interface ITeamRepository {
   delete(team_id: string): Promise<void>;
   update(team: ITeam): Promise<void>;
   getAll() : Promise<ITeam[]>;
+  getAllWithPoints() : Promise<ITeam[]>;
 }

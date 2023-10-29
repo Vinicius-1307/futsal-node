@@ -9,6 +9,20 @@ export class TeamRepositoryPrisma implements ITeamRepository {
     this.repository = prisma.teams;
   }
 
+  async getAllWithPoints(): Promise<ITeam[]> {
+    const teams = await this.repository.findMany({
+      select: {
+        name: true,
+        goals: true,
+        points: true
+      },
+      orderBy:{
+        points: 'desc'
+      }
+    })
+    return teams as ITeam[];
+  }
+
   async getAll(): Promise<ITeam[]> {
     const teams = await this.repository.findMany({ 
       select: {
