@@ -9,6 +9,16 @@ export class TeamRepositoryPrisma implements ITeamRepository {
     this.repository = prisma.teams;
   }
 
+  async getAll(): Promise<ITeam[]> {
+    const teams = await this.repository.findMany({ 
+      select: {
+        name: true,
+        Players: true
+      }
+    });
+    return teams as unknown as ITeam[];
+  }
+
   async update(team: ITeam): Promise<void> {
     await this.repository.update({
       where: { 

@@ -15,4 +15,5 @@ export interface ITeamRepository {
   updateTeam(data: IUpdateTeamDTO) : Promise<void>;
   delete(team_id: string): Promise<void>;
   update(team: ITeam): Promise<void>;
+  getAll() : Promise<ITeam[]>;
 }
