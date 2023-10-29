@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
 import { ApiError } from "../errors/ApiError";
 import "dotenv/config";
-import { UserRepositoryPrisma } from "@repositories/prisma/UserRepositoryPrisma";
+import { UserRepositoryPrisma } from "@repositories/implementations/prisma/UserRepositoryPrisma";
 
 interface IPayload {
     sub: string;

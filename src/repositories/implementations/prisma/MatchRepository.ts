@@ -9,6 +9,11 @@ export class MatchRepositoryPrisma implements IMatchRepository {
     this.repository = prisma.matches;
   }
 
+  async delete(match_id: string): Promise<void> {
+    await this.repository.delete({ where: { id: match_id } })
+    return;
+  }
+
   async update(match: IMatch): Promise<void> {
     await this.repository.update({
       where: { 
