@@ -1,4 +1,5 @@
 import { ApiError } from "@errors/ApiError";
+import { IPlayer } from "@models/Player";
 import { IMatchRepository } from "@repositories/IMatchRepository";
 import { ITeamRepository } from "@repositories/ITeamRepository";
 import { inject, injectable } from "tsyringe";
@@ -31,6 +32,10 @@ export interface ICreateMatchUseCase {
                 const teamBExist = await this.teamRepository.findById(teamB_id)
                 if(!teamBExist) throw new ApiError("Time B informado não foi encontrado.");
 
+                if(teamAExist.Players.length < 5) throw new ApiError("O time A não contém 5 jogadores, por isso, não pode participar de uma partida")
+
+                if(teamBExist.Players.length < 5) throw new ApiError("O time B não contém 5 jogadores, por isso, não pode participar de uma partida")
+                
                 const startTimeDate = new Date(start_time);
                 const endTimeDate = new Date(end_time);
 

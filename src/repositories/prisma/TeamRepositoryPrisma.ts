@@ -38,7 +38,9 @@ export class TeamRepositoryPrisma implements ITeamRepository {
       where: { 
         id: team.id 
       },
-    data: team,
+    data: {
+      name: team.name
+    },
     }
     )
   }
@@ -66,8 +68,11 @@ export class TeamRepositoryPrisma implements ITeamRepository {
     const team = await this.repository.findFirst({ 
       where: { 
         id: team_id 
-      } });
-
+      },
+      include: {
+        Players: true
+      }
+    });
     return team as ITeam;
 }
 
@@ -75,7 +80,7 @@ export class TeamRepositoryPrisma implements ITeamRepository {
     const team = await this.repository.findUnique({
       where: {name},
     })
-    return team as ITeam
+    return team as unknown as ITeam
   }
 
   async create(data: ICreateTeamDTO): Promise<ITeam> {
@@ -84,7 +89,6 @@ export class TeamRepositoryPrisma implements ITeamRepository {
         name: data.name,
       },
     });
-
-    return team as ITeam;
+    return team as unknown as ITeam;
   }
 }
