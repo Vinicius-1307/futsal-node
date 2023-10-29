@@ -1,4 +1,5 @@
 export interface IMatch {
+  id: string;
   start_time: Date;
   end_time: Date;
   teamA_id: string;

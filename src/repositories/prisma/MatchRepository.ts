@@ -10,7 +10,12 @@ export class MatchRepositoryPrisma implements IMatchRepository {
   }
 
   async update(match: IMatch): Promise<void> {
-   
+    await this.repository.update({
+      where: { 
+        id: match.id
+      },
+    data: match,
+    })
   }
 
   async findById(match_id: string): Promise<IMatch> {

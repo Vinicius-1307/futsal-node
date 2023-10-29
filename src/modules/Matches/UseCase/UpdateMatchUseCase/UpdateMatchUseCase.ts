@@ -38,13 +38,19 @@ export interface IUpdateMatchUseCase {
                     matchExist.result = "Empate";
                 }
 
+                // Zera os gols e pontos sempre antes de fazer uma alteração.
                 teamA.points = 0;
                 teamB.points = 0;
                 teamA.goals = 0;
                 teamB.goals = 0;
 
+                // Salva na tabela "teams"
                 teamA.goals += goalsTeamA;
                 teamB.goals += goalsTeamB;
+
+                // Salva na tabela "matches"
+                matchExist.goalsTeamA += teamA.goals
+                matchExist.goalsTeamB += teamB.goals
                 
                 switch (matchExist.result) {
                     case "TeamA":

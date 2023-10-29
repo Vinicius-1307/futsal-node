@@ -34,7 +34,6 @@ export interface ICreateMatchUseCase {
                 const startTimeDate = new Date(start_time);
                 const endTimeDate = new Date(end_time);
 
-
                 await this.matchRepository.create({
                     start_time: startTimeDate, 
                     end_time: endTimeDate,
