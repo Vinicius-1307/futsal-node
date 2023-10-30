@@ -1,4 +1,5 @@
 import { ApiError } from "@errors/ApiError";
+import { Match } from "@models/Match";
 import { IMatchRepository } from "@repositories/IMatchRepository";
 import { ITeamRepository } from "@repositories/ITeamRepository";
 import { inject, injectable } from "tsyringe";
@@ -31,44 +32,22 @@ export interface IUpdateMatchUseCase {
                 let result: "TeamA" | "TeamB" | "Empate" = "Empate";
 
                 if (goalsTeamA > goalsTeamB) {
-                    matchExist.result = "TeamA";
+                    result = "TeamA";
                 } else if (goalsTeamA < goalsTeamB) {
-                    matchExist.result = "TeamB";
-                } else {
-                    matchExist.result = "Empate";
+                    result = "TeamB";
                 }
-
-                // Zera os gols e pontos sempre antes de fazer uma alteração.
-                teamA.points = 0;
-                teamB.points = 0;
-                teamA.goals = 0;
-                teamB.goals = 0;
-
+        
+                const updatedMatch = new Match(goalsTeamA, goalsTeamB, result, teamA, teamB);
+        
                 // Salva na tabela "matches"
-                matchExist.goalsTeamA += teamA.goals
-                matchExist.goalsTeamB += teamB.goals
-                
-                // Salva na tabela "teams"
-                teamA.goals += goalsTeamA;
-                teamB.goals += goalsTeamB;
-
-                switch (matchExist.result) {
-                    case "TeamA":
-                        teamA.points += 3;
-                        break;
-                    case "TeamB":
-                        teamB.points += 3;
-                        break;
-                    case "Empate":
-                        teamA.points += 1;
-                        teamB.points += 1;
-                        break;
-                }
-
+                matchExist.goalsTeamA += teamA.goals;
+                matchExist.goalsTeamB += teamB.goals;
+        
                 await this.teamRepository.update(teamA);
                 await this.teamRepository.update(teamB);
-                
+        
                 await this.matchRepository.update(matchExist);
+        
                 return;
             }
            }
