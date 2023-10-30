@@ -17,6 +17,10 @@ export interface IUpdatePlayerUseCaseData{
                 ){}
     
             async execute({name, shirt_number, team_id, player_id}:IUpdatePlayerUseCaseData):Promise<void>{
+
+                const playerExist = await this.playerRepository.findById(player_id);
+
+                if(!playerExist) throw new ApiError("Jogador não encontrado.");
     
                 const teamExist = await this.teamRepository.findById(team_id)
                 

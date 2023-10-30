@@ -12,12 +12,10 @@ export interface IDeletePlayerUseCaseData {
     
             async execute({player_id}: IDeletePlayerUseCaseData):Promise<void> {
 
-                const player = await this.playerRepository.findById(player_id)
+                const playerExist = await this.playerRepository.findById(player_id)
 
-                if(!player) {
-                    throw new ApiError("Time não encontrado.");
-                }
-
+                if(!playerExist) throw new ApiError("Jogador não encontrado.");
+            
                 await this.playerRepository.delete(player_id)
                 
                 return;
