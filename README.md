@@ -25,45 +25,6 @@ Link para [Documentação da API](https://documenter.getpostman.com/view/3080257
  ```bash
  npm install #para instalar as depêndencias do projeto
 ```
- ```bash
- npm install bcrypt #dependências
-```
- ```bash
- npm install chalk #dependências
-```
- ```bash
- npm install cors #dependências
-```
- ```bash
- npm install dotenv #dependências
-```
- ```bash
- npm install erd #dependências
-```
- ```bash
- npm install express #dependências
-```
- ```bash
- npm install express-async-errors #dependências
-```
- ```bash
- npm install generator #dependências
-```
- ```bash
- npm install jsonwebtoken #dependências
-```
- ```bash
- npm install moment #dependências
-```
- ```bash
- npm install reflect-metadata #dependências
-```
- ```bash
- npm install zod #dependências
-```
- ```bash
- npm install tsyringe #dependências
-```
 ```bash
  npx prisma migrate dev #para rodar todas as migrations do projeto
 ```
@@ -77,6 +38,19 @@ Link para [Documentação da API](https://documenter.getpostman.com/view/3080257
  - [TypeScript](https://www.typescriptlang.org/docs/)
  - [Npm](https://docs.npmjs.com)
  - [Prisma ORM](https://www.prisma.io/docs)
+ - [Bcrypt](https://www.npmjs.com/package/bcrypt)
+ - [Chalk](https://www.npmjs.com/package/chalk)
+ - [Cors](https://www.npmjs.com/package/cors)
+ - [Dotenv](https://www.npmjs.com/package/dotenv)
+ - [Erd](https://www.npmjs.com/package/erd)
+ - [Express](https://www.npmjs.com/package/express)
+ - [Express-async-errors](https://www.npmjs.com/package/express-async-errors)
+ - [Generator](https://www.npmjs.com/package/generator)
+ - [Jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
+ - [Moment](https://www.npmjs.com/package/moment)
+ - [Reflect-metadata](https://www.npmjs.com/package/reflect-metadata)
+ - [Zod](https://www.npmjs.com/package/zod)
+ - [Tsyringe](https://www.npmjs.com/package/tsyringe)
 
 <br>
 
