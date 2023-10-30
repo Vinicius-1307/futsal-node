@@ -44,14 +44,14 @@ export interface IUpdateMatchUseCase {
                 teamA.goals = 0;
                 teamB.goals = 0;
 
-                // Salva na tabela "teams"
-                teamA.goals += goalsTeamA;
-                teamB.goals += goalsTeamB;
-
                 // Salva na tabela "matches"
                 matchExist.goalsTeamA += teamA.goals
                 matchExist.goalsTeamB += teamB.goals
                 
+                // Salva na tabela "teams"
+                teamA.goals += goalsTeamA;
+                teamB.goals += goalsTeamB;
+
                 switch (matchExist.result) {
                     case "TeamA":
                         teamA.points += 3;
@@ -64,12 +64,11 @@ export interface IUpdateMatchUseCase {
                         teamB.points += 1;
                         break;
                 }
-        
+
                 await this.teamRepository.update(teamA);
                 await this.teamRepository.update(teamB);
-
+                
                 await this.matchRepository.update(matchExist);
                 return;
             }
-    
            }

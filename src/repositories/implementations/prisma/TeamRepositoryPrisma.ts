@@ -39,10 +39,11 @@ export class TeamRepositoryPrisma implements ITeamRepository {
         id: team.id 
       },
     data: {
-      name: team.name
+      name: team.name,
+      goals: team.goals,
+      points: team.points
     },
-    }
-    )
+    })
   }
 
   async delete(team_id: string): Promise<void> {
