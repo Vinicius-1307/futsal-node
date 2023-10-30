@@ -26,7 +26,7 @@ Link para [Documentação da API](https://documenter.getpostman.com/view/3080257
  npm install #para instalar as depêndencias do projeto
 ```
 ```bash
- npx prisma migrate dev #para rodar todas as migrations do projeto
+ npx prisma migrate deploy #para rodar todas as migrations do projeto
 ```
 ```bash
  npm run dev #para iniciar o servidor de desenvolvimento
