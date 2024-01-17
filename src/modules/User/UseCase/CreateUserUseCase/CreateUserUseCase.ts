@@ -1,4 +1,5 @@
 import { ApiError } from "@errors/ApiError";
+import { IUser } from "@models/User";
 import { IUserRepository } from "@repositories/IUserRepository";
 import { hash } from "bcrypt";
 import { inject, injectable } from "tsyringe";
@@ -17,7 +18,7 @@ interface ICreateUserUseCaseData {
                 name,
                 email, 
                 password 
-            }: ICreateUserUseCaseData): Promise<void> {
+            }: ICreateUserUseCaseData): Promise<IUser> {
     
                 const accountAlreadyExists = await this.userRepository.findByEmail(email);
 
@@ -27,9 +28,14 @@ interface ICreateUserUseCaseData {
 
                 const passwordHash = await hash(password, 8);
 
-                await this.userRepository.create({name, email, password: passwordHash})
+                const user = await this.userRepository.create({name, email, password: passwordHash})
                 
-                return;
+                const userWithoutPassword = {
+                    id: user.id,
+                    name: user.name,
+                    email: user.email,
+                };
+        
+                return userWithoutPassword;
             }
-    
-           }
+        }

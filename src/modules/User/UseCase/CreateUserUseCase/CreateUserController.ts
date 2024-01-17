@@ -11,15 +11,13 @@ import { Request, Response } from "express";
                 const {email, password, name} = CreateUserValidation.validate(req.body);
         
                 const createuserUseCase = container.resolve(CreateUserUseCase);
-        
-        
-                await createuserUseCase.execute({email, password, name});
-        
+                const userWithoutPassword = await createuserUseCase.execute({email, password, name});
+                
                 return ReturnApi.success(res, { 
-                    data: null, 
+                    data: userWithoutPassword, 
                     message: "Conta criada com sucesso.", 
                     developerMessage: "Account created.", 
-                    statusHTTP: 200
+                    statusHTTP: 201
                 });
             }
         }

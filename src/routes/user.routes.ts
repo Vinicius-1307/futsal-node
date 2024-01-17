@@ -7,4 +7,4 @@ export const userRouter = express.Router();
 const authMiddleware = new AuthMiddleware();
 const createUserController = new CreateUserController();
 
-userRouter.post("/", authMiddleware.auth, createUserController.handle)
+userRouter.post("/", createUserController.handle)
